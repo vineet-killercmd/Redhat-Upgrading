@@ -1,0 +1,53 @@
+# A shell script that upgrades Python 2 files to Python 3 using 2to3, and logging the process for traceability.
+# Step-by-step commands to run on the terminal/command line.
+
+# Navigate to the correct folder where your Python files are stored
+ls
+cd downnloads
+
+# List all .py files in the directory
+ls *.py
+
+# Run 2to3 (which is already installed on any python version before 3.11) directly for quick testing of all the files.
+2to3 -f all .
+
+# Files which require the upgrade from python2 to python3 version, run the following command for .py file to successfully upgrade it. 
+# Consider the uno.py as the sample file. -w flag applies the changes to the file.
+2to3 -f all -w uno.py
+
+# Create a script file and use the nano editor to write the file.
+touch update_py2_to_py3.zsh
+nano update_py2_to_py3.zsh
+
+#Paste the following script inside update_py2_to_py3.zsh and save it:
+LOGFILE="upgrade_log.txt"
+TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+echo "[$TIMESTAMP] Script run by $USER in $PWD" >> "$LOGFILE"
+2to3 -w -f all . 2>&1 | tee -a "$LOGFILE"
+
+# Make this script executable
+chmod +x update_py2_to_py3.zsh
+
+# Run the script
+./update_py2_to_py3.zsh
+
+# Check the log file
+cat upgrade_log.txt
+
+
+#SUMMARY FOR THE STEPS
+
+### Script: update_py2_to_py3.zsh
+
+This script upgrades all `.py` files in a directory from Python 2 syntax to Python 3 using `2to3`.
+
+#### Usage:
+chmod +x update_py2_to_py3.zsh
+./update_py2_to_py3.zsh
+
+
+
+
+
+
+
