@@ -35,15 +35,6 @@ chmod +x update_py2_to_py3.zsh
 cat upgrade_log.txt
 
 
-#SUMMARY FOR THE STEPS
-
-### Script: update_py2_to_py3.zsh
-
-This script upgrades all `.py` files in a directory from Python 2 syntax to Python 3 using `2to3`.
-
-#### Usage:
-chmod +x update_py2_to_py3.zsh
-./update_py2_to_py3.zsh
 
 
 
